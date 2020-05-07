@@ -49,7 +49,7 @@ class NoisyLinear(nn.Module):
         if not self.training:
           return nn.functional.linear(input, self.weight, self.bias)
 
-        rand5 = self.anoise.data.normal_() * self.ma_sigma
+        randa = self.anoise.data.normal_() * self.ma_sigma
         randa = torch.sign(randa) * torch.sqrt(torch.abs(randa))
 
         randb = self.bnoise.data.normal_() * self.mb_sigma
